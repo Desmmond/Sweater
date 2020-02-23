@@ -4,6 +4,7 @@ import com.example.sweater.domain.Role;
 import com.example.sweater.domain.User;
 import com.example.sweater.repository.UserRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -20,9 +21,10 @@ public class RegistrationController {
     }
 
     @GetMapping("/registration")
-    public String registration() {
-        return "registration";
-    }
+    public String registration(Model model) {
+            model.addAttribute("message", "");
+            return ("/registration");
+        }
 
     @PostMapping("/registration")
     public String addUser(User user, Map<String, Object> model) {
